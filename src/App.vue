@@ -2,12 +2,12 @@
   <div id="app">
     <h1>MyTodoApp</h1>
     <div>
-      <label for="title">タイトル：</label>
+      <label>タイトル：</label>
       <!-- <label>タイトル：</label> -->
       <input type="text" v-model="title" placeholder="タイトル" name="title" id="title" />
     </div>
     <div>
-      <label for="body">内容：</label>
+      <label>内容：</label>
       <textarea v-model="body" placeholder="内容" id="body"></textarea>
     </div>
     <div>
