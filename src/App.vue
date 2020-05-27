@@ -28,10 +28,7 @@
 <script>
 export default {
   data: () => ({
-    lists: [
-      { title: "mytodo", body: "contentcontent" },
-      { title: "hogehoge", body: "yuuyuuyuyuyu" }
-    ],
+    lists: [],
     title: "",
     body: ""
   }),
@@ -43,15 +40,26 @@ export default {
       this.lists.push({ title: this.title, body: this.body });
       this.title = "";
       this.body = "";
+      this.saveTodo();
     },
     // リストの削除
     deleteList: function(i) {
       this.lists.splice(i, 1);
+      this.saveTodo();
     },
     //データをセーブ
     saveTodo: function(){
-      localStorage.setItem(('items',JSON.stringify(this.items)));
+      localStorage.setItem('list_storage',JSON.stringify(this.lists));
+    },
+    loadTodo: function(){
+      this.lists =JSON.parse(localStorage.getItem('list_storage'));
+      if(!this.lists){
+        this.lists = [];
+      }
     }
+  },
+  mounted: function(){
+    this.loadTodo();
   }
 };
 </script>
